@@ -22,6 +22,7 @@
 		<commons.version>3.11</commons.version>
 		<bytebuddy.version>1.12.19</bytebuddy.version>
 		<flyway.version>6.5.2</flyway.version>
+		<oauth2.version>2.6.8</oauth2.version>
 	</properties>
 
 	<dependencies>
@@ -38,6 +39,10 @@
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.github.ben-manes.caffeine</groupId>
 			<artifactId>caffeine</artifactId>
 		</dependency>
@@ -45,6 +50,11 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+			<version>${oauth2.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>

@@ -35,12 +35,14 @@ public class SuperHeroManagementServiceImpl implements SuperHeroManagementServic
     }
 
     @Override
+    @TrackProcessingTime
     public List<SuperHero> getAllSuperheroesByName(String name) {
         log.info("Getting all superheroes by name: " + name);
         return superHeroManagementDao.getAllSuperheroesByName(name);
     }
 
     @Override
+    @TrackProcessingTime
     public void deleteSuperHero(long superheroId) throws NotFoundException {
         SuperHero superHero = this.getSuperHeroById(superheroId);
         log.info("Deleting superhero - SuperheroId " + superheroId);
@@ -48,6 +50,7 @@ public class SuperHeroManagementServiceImpl implements SuperHeroManagementServic
     }
 
     @Override
+    @TrackProcessingTime
     public SuperHero updateSuperhero(long superheroId, SuperHeroRequest superHeroRequest) throws NotFoundException {
         this.getSuperHeroById(superheroId);
         log.info("Updating superhero - SuperheroId " + superheroId);
