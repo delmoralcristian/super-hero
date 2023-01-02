@@ -1,4 +1,4 @@
-package mindata.delmoralcristian.superhero.config;
+package mindata.delmoralcristian.superhero.config.swagger;
 
 import static com.google.common.base.Predicates.or;
 import static springfox.documentation.builders.PathSelectors.regex;

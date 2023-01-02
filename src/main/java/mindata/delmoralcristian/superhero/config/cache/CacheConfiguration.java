@@ -1,4 +1,4 @@
-package mindata.delmoralcristian.superhero.config;
+package mindata.delmoralcristian.superhero.config.cache;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;

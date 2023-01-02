@@ -1,4 +1,4 @@
-package mindata.delmoralcristian.superhero.config;
+package mindata.delmoralcristian.superhero.config.swagger;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
