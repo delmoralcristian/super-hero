@@ -1,5 +1,6 @@
 package mindata.delmoralcristian.superhero.config.security;
 
+import lombok.var;
 import mindata.delmoralcristian.superhero.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -41,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public BasicAuthenticationEntryPoint swaggerAuthenticationEntryPoint() {
-        BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
+        var entryPoint = new BasicAuthenticationEntryPoint();
         entryPoint.setRealmName("Swagger Realm");
         return entryPoint;
     }

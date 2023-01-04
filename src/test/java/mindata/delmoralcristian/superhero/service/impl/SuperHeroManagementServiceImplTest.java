@@ -1,5 +1,6 @@
 package mindata.delmoralcristian.superhero.service.impl;
 
+import lombok.var;
 import mindata.delmoralcristian.superhero.dao.impl.SuperHeroManagementDaoImpl;
 import mindata.delmoralcristian.superhero.dto.SuperHeroRequest;
 import mindata.delmoralcristian.superhero.exceptions.NotFoundException;
@@ -72,7 +73,7 @@ public class SuperHeroManagementServiceImplTest {
 
         Mockito.when(superHeroManagementDao.getSuperHero(anyLong())).thenReturn(Optional.of(superhero));
 
-        SuperHero response = superHeroManagementService.getSuperHero(1L);
+        var response = superHeroManagementService.getSuperHero(1L);
 
         Assert.assertEquals(response.getAge(), 31);
         Assert.assertEquals(response.getHealth(), 100);
@@ -88,7 +89,7 @@ public class SuperHeroManagementServiceImplTest {
     public void getAllSuperheroes() {
         Mockito.when(superHeroManagementDao.getAllSuperheroes()).thenReturn(Arrays.asList(superhero2, superhero3));
 
-        List<SuperHero> response = superHeroManagementService.getAllSuperheroes();
+        var response = superHeroManagementService.getAllSuperheroes();
 
         Assert.assertEquals(response.size(), 2);
         Assert.assertEquals(response.get(0).getHealth(), 100);
@@ -98,7 +99,7 @@ public class SuperHeroManagementServiceImplTest {
     public void getAllSuperheroesByName() {
         Mockito.when(superHeroManagementDao.getAllSuperheroesByName(anyString())).thenReturn(Arrays.asList(superhero2));
 
-        List<SuperHero> response = superHeroManagementService.getAllSuperheroesByName("Spi");
+        var response = superHeroManagementService.getAllSuperheroesByName("Spi");
 
         Assert.assertEquals(response.size(), 1);
         Assert.assertEquals(response.get(0).getHealth(), 100);
@@ -107,21 +108,21 @@ public class SuperHeroManagementServiceImplTest {
     @Test
     public void updateSuperhero() {
 
-        SuperHeroRequest superheroToUpdate = new SuperHeroRequest();
+        var superheroToUpdate = new SuperHeroRequest();
         superheroToUpdate.setHealth(107);
         superheroToUpdate.setAttack(79);
 
         Mockito.when(superHeroManagementDao.updateSuperhero(any())).thenReturn(superhero3);
         Mockito.when(superHeroManagementDao.getSuperHero(anyLong())).thenReturn(Optional.of(superhero3));
 
-        SuperHero response = superHeroManagementService.updateSuperhero(1L, superheroToUpdate);
+        var response = superHeroManagementService.updateSuperhero(1L, superheroToUpdate);
 
         Assert.assertNotNull(response);
     }
 
     @Test(expected = NotFoundException.class)
     public void updateSuperheroNotFound() {
-        SuperHeroRequest superheroToUpdate = new SuperHeroRequest();
+        var superheroToUpdate = new SuperHeroRequest();
         superheroToUpdate.setHealth(107);
         superheroToUpdate.setAttack(79);
 

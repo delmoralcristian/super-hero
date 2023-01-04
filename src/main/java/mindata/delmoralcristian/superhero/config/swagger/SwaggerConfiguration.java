@@ -60,7 +60,7 @@ public class SwaggerConfiguration {
      * @return the predicate used to check if the path should be included or not.
      */
     private Predicate<String> paths() {
-        return or(regex(MICROSERVICE_PATH + ".*"));
+        return or(regex(new StringBuilder(MICROSERVICE_PATH).append(".*").toString()));
     }
 }
 

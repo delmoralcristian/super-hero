@@ -1,6 +1,7 @@
 package mindata.delmoralcristian.superhero.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import lombok.var;
 import mindata.delmoralcristian.superhero.advice.TrackProcessingTime;
 import mindata.delmoralcristian.superhero.dao.SuperHeroManagementDao;
 import mindata.delmoralcristian.superhero.dto.SuperHeroRequest;
@@ -12,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -23,7 +23,8 @@ public class SuperHeroManagementServiceImpl implements SuperHeroManagementServic
 
     @Override
     public SuperHero getSuperHero(long superheroId) throws NotFoundException {
-        log.info("Getting all superheroes by id: " + superheroId);
+        var logMessage = new StringBuilder("Getting all superheroes by id: ").append(superheroId);
+        log.info(logMessage.toString());
         return this.getSuperHeroById(superheroId);
     }
 
@@ -37,15 +38,17 @@ public class SuperHeroManagementServiceImpl implements SuperHeroManagementServic
     @Override
     @TrackProcessingTime
     public List<SuperHero> getAllSuperheroesByName(String name) {
-        log.info("Getting all superheroes by name: " + name);
+        var logMessage = new StringBuilder("Getting all superheroes by name: ").append(name);
+        log.info(logMessage.toString());
         return superHeroManagementDao.getAllSuperheroesByName(name);
     }
 
     @Override
     @TrackProcessingTime
     public void deleteSuperHero(long superheroId) throws NotFoundException {
-        SuperHero superHero = this.getSuperHeroById(superheroId);
-        log.info("Deleting superhero - SuperheroId " + superheroId);
+        var superHero = this.getSuperHeroById(superheroId);
+        var logMessage = new StringBuilder("Deleting superhero - SuperheroId ").append(superheroId);
+        log.info(logMessage.toString());
         superHeroManagementDao.deleteSuperHero(superHero.getId());
     }
 
@@ -53,12 +56,13 @@ public class SuperHeroManagementServiceImpl implements SuperHeroManagementServic
     @TrackProcessingTime
     public SuperHero updateSuperhero(long superheroId, SuperHeroRequest superHeroRequest) throws NotFoundException {
         this.getSuperHeroById(superheroId);
-        log.info("Updating superhero - SuperheroId " + superheroId);
+        var logMessage = new StringBuilder("Updating superhero - SuperheroId ").append(superheroId);
+        log.info(logMessage.toString());
         return superHeroManagementDao.updateSuperhero(SuperHeroRequest.of(superheroId, superHeroRequest));
     }
 
     private SuperHero getSuperHeroById(long superheroId) {
-        Optional<SuperHero> superHero = superHeroManagementDao.getSuperHero(superheroId);
+        var superHero = superHeroManagementDao.getSuperHero(superheroId);
         if(!superHero.isPresent()) {
             throw new NotFoundException(String.format(CommonMessage.SUPER_HERO_NOT_FOUND.getMessage(), superheroId));
         }

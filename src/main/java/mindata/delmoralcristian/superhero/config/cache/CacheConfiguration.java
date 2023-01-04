@@ -1,6 +1,7 @@
 package mindata.delmoralcristian.superhero.config.cache;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
+import lombok.var;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
@@ -15,7 +16,7 @@ public class CacheConfiguration {
 
     @Bean
     public CacheManager cacheManager() {
-        CaffeineCacheManager cacheManager = new CaffeineCacheManager("superheroes");
+        var cacheManager = new CaffeineCacheManager("superheroes");
         cacheManager.setCaffeine(Caffeine.newBuilder()
                 .initialCapacity(200)
                 .maximumSize(500)
